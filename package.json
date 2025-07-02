@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "Jean Paul Ferreira",
+  "author": "Esteban Lucero",
   "license": "MIT",
   "type": "module",
   "dependencies": {
