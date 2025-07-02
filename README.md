@@ -72,7 +72,7 @@ clave = 123456
 en cada peticion get, post etc copiar el token para luego en el headers key:Authorization value=Bearer token
 
 
-
+formato de los datos en firebase
     {
         "id": "0001",
         "sku": "PKM001005",
@@ -82,4 +82,7 @@ en cada peticion get, post etc copiar el token para luego en el headers key:Auth
         "stock": 10,
         "description": "Figura coleccion"
     }
+    
+    vista de postman haciedo las distintas peticiones
+
 ![postman](postman.png)
