@@ -82,3 +82,4 @@ en cada peticion get, post etc copiar el token para luego en headers key:Authori
         "stock": 10,
         "description": "Figura coleccion"
     }
+![postman](postman.png)
