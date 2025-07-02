@@ -1,26 +1,28 @@
-import express from 'express';
+import express from "express";
+import cors from "cors";
+import authRouter from "./src/routes/auth.routes.js";
+import productsRouter from "./src/routes/products.router.js";
+
+
+//import bodyParser from 'body-parser'; //no usar ya que express superior a 4.16 lo trae nativo ver linea 15
 const app = express();
+app.use(cors());
+app.use(express.json());//aqui utilizamos el bodyparse de express ya que esta integrado, no hace falta intalar npm i body-parse 
 
-const products=[
-{ id: 1, name: "producto 1", price: 100},
-{ id: 2, name: "producto 2", price: 200},
-{ id: 3, name: "producto 3", price: 300},
-];
+// Middleware para parsear JSON
+//app.use(bodyParser.json());//no usar ver lineas 7 y 10
 
-app.get("/",(req,res) =>{
-    res.send("holasss");
+//rutas
+app.get("/", (req, res) => {
+  res.json({ message: "API Rest en Node.js" });
 });
 
-app.get("/products",(req,res) =>{
-    res.send(products);
+app.use("/api",productsRouter);
+app.use('/',authRouter);
+
+app.use((req, res, next) => {
+  res.status(404).json({ error: "recurso no encontrado, ingrese /login con email y contraseña" });
 });
 
-app.get("/products/:id",(req,res) =>{
-    //console.log(req.params.id);
-    const product=products.find((item) => item.id==req.params.id )
-    res.send(product);
-});
-
-const PORT=3000;
-
-app.listen(PORT,() => console.log(`http://localhost:${PORT}`));
+const PORT = 3000;
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
