@@ -69,7 +69,7 @@ Agrega la lógica necesaria en la en controlador de login para validar la identi
 
 email = email2@gmail.com 
 clave = 123456
-en cada peticion get, post etc copiar el token para luego en headers key:Authorization value=Bearer token
+en cada peticion get, post etc copiar el token para luego en el headers key:Authorization value=Bearer token
 
 
 
