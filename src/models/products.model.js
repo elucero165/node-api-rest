@@ -6,7 +6,9 @@ import {
     addDoc,
     deleteDoc,
     setDoc,
-    doc
+    doc,
+    query,
+    where
 } from 'firebase/firestore';
 
 const productsCollection = collection(db, 'products');
@@ -49,6 +51,7 @@ export async function updateProductById(id, productData) {
     await setDoc(doc(productsCollection, id), productData, { merge: true });
 }
 
+// Opción 1: Búsqueda flexible (parcial, insensible a mayúsculas)
 export async function searchProducts({ categoria, descripcion }) {
     const querySnapshot = await getDocs(productsCollection);
     const products = [];
@@ -61,6 +64,28 @@ export async function searchProducts({ categoria, descripcion }) {
         if (matchCategoria && matchDescripcion) {
             products.push({ id: docSnap.id, ...data });
         }
+    });
+
+    return products;
+}
+
+// Opción 2: Búsqueda directa en Firestore (exacta, más eficiente)
+export async function searchProductsExact({ categoria, descripcion }) {
+    let q = productsCollection;
+
+    if (categoria && descripcion) {
+        q = query(productsCollection, where("category", "==", categoria), where("description", "==", descripcion));
+    } else if (categoria) {
+        q = query(productsCollection, where("category", "==", categoria));
+    } else if (descripcion) {
+        q = query(productsCollection, where("description", "==", descripcion));
+    }
+
+    const querySnapshot = await getDocs(q);
+    const products = [];
+
+    querySnapshot.forEach((docSnap) => {
+        products.push({ id: docSnap.id, ...docSnap.data() });
     });
 
     return products;

@@ -7,7 +7,8 @@ import {
   getProductById,
   saveProductWithCustomId,
   updateProduct,
-  searchProducts
+  searchProducts,
+  searchProducts2
 } from "../controllers/products.controller.js";
 
 import { verifyToken } from "../middleware/auth-middleware.js";
@@ -16,6 +17,7 @@ const router = Router();
 
 router.get("/products", verifyToken, getAllProducts);
 router.get("/products/search", verifyToken, searchProducts);
+router.get("/products/search2", verifyToken, searchProducts2);
 router.get("/products/:id", verifyToken, getProductById);
 
 router.post("/products/create", 

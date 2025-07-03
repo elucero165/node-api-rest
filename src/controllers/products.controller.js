@@ -14,10 +14,13 @@ export const getAllProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
+
+    console.log(id);
+    
     const product = await model.getProductById(id);
 
     if (!product) {
-      return res.status(404).json({ error: "No existe el producto" });
+      return res.status(404).json({ error: "No existe el producto como parametro id" });
     }
 
     res.json(product);
@@ -115,8 +118,28 @@ export const deleteProduct = async (req, res) => {
 export const searchProducts = async (req, res) => {
     try {
         const { categoria, descripcion } = req.query;
+        console.log(categoria || descripcion);
 
         const productos = await model.searchProducts({ categoria, descripcion });
+        
+        res.json(productos);
+        
+    } catch (error) {
+        console.error("Error al buscar productos:", error);
+        res.status(500).json({ message: "Error al buscar productos" });
+    }
+};
+
+export const searchProducts2 = async (req, res) => {
+    try {
+        const { categoria, descripcion } = req.query;
+        console.log(categoria || descripcion);
+
+        if (!categoria && !descripcion) {
+          return res.status(400).json({ message: "Debes proporcionar al menos 'categoria' o 'descripcion'." });
+        }
+
+        const productos = await model.searchProductsExact({ categoria, descripcion });
         
         res.json(productos);
         

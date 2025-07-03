@@ -88,3 +88,20 @@ formato de los datos en firebase
     vista de postman haciedo las distintas peticiones
 
 ![postman](postman.png)
+
+funionalidad del search
+Trae todos los productos de Firestore.
+Filtra en memoria los productos que coincidan con:
+
+categoria → parcial, insensible a mayúsculas.
+
+descripcion → parcial, insensible a mayúsculas.
+
+Si no se envían filtros, devuelve todos los productos.
+Comparación flexible tipo "contiene", ideal para búsquedas de texto.
+
+Ventaja
+    Permite búsquedas parciales e insensibles a mayúsculas, aunque no lo soporta Firestore directamente.
+
+Desventaja
+    Si la colección es muy grande, traer todos los documentos puede ser lento y costoso.
