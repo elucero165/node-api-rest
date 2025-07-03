@@ -1,11 +1,6 @@
 # API Rest en Node.js
 
-## Instalación
-
-```shell
-npm install
-```
-#el siguiente comando es para darle permiso a node
+#el siguiente comando es para darle permiso a node maquina local con windows 10
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
@@ -85,9 +80,9 @@ formato de los datos en firebase
     }
     
 
-    vista de postman haciedo las distintas peticiones
+vista de postman local haciedo las distintas peticiones
 
-![postman](postman.png)
+![postman](images/postman.png)
 
 funionalidad del search
 Trae todos los productos de Firestore.
@@ -105,3 +100,16 @@ Ventaja
 
 Desventaja
     Si la colección es muy grande, traer todos los documentos puede ser lento y costoso.
+
+
+dominio vercel = https://node-api-rest-bice.vercel.app/
+
+
+![login](images/login.png)
+![registrar](images/register_email.png)
+![todos los productos](images/todos_products.png)
+![un producto](images/productsid.png)
+![busqueda parcial](images/search.png)
+![busqueda exacta](images/search2.png)
+![actualizar un producto](images/actualizar.png)
+![eliminar un producto](images/delete.png)
