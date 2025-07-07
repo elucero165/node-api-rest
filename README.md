@@ -85,7 +85,7 @@ vista de postman local haciedo las distintas peticiones
 ![postman](images/postman.png)
 
 funionalidad del search
-Trae todos los productos de Firestore.
+Opcion 1
 Filtra en memoria los productos que coincidan con:
 
 categoria → parcial, insensible a mayúsculas.
@@ -101,7 +101,10 @@ Ventaja
 Desventaja
     Si la colección es muy grande, traer todos los documentos puede ser lento y costoso.
 
+opcion 2
+filtra segun categoria, descripcion utilizando 
 
+-------------------------------------------------
 dominio vercel = https://node-api-rest-bice.vercel.app/
 
 
@@ -113,3 +116,4 @@ dominio vercel = https://node-api-rest-bice.vercel.app/
 ![busqueda exacta](images/search2.png)
 ![actualizar un producto](images/actualizar.png)
 ![eliminar un producto](images/delete.png)
+

@@ -69,7 +69,7 @@ export async function searchProducts({ categoria, descripcion }) {
     return products;
 }
 
-// Opción 2: Búsqueda directa en Firestore (exacta, más eficiente)
+// Opción 2: Búsqueda directa (exacta, más eficiente)
 export async function searchProductsExact({ categoria, descripcion }) {
     let q = productsCollection;
 
