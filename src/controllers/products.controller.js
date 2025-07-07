@@ -14,9 +14,16 @@ export const getAllProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
+    const normalizedId = id.toLowerCase();
 
     console.log(id);
     
+    if (normalizedId === 'create') {
+      return res
+        .status(405)
+        .json({ error: "Método no permitido. Usá POST para crear un producto." });
+    }
+
     const product = await model.getProductById(id);
 
     if (!product) {
